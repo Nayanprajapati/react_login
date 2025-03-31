@@ -14,11 +14,9 @@ this is sajndsnasd
   - Password strength validation (minimum 8 characters, one uppercase letter, and one number).
   - Confirms that the password and confirm password fields match.
 
-2. Local Storage:
+- Local Storage:
+  - New users are added to the local storage with their registration details.
+  - If a user is already logged in, they are redirected to the home page.
 
-- New users are added to the local storage with their registration details.
-- If a user is already logged in, they are redirected to the home page.
-
-3. Toast Notifications:
-
-- Displays success or error messages after user interactions.
+- Toast Notifications:
+  - Displays success or error messages after user interactions.
