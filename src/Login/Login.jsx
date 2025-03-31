@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import "./Login.css";
 import Navbar from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Don't forget to import the styles
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility
 
   const navigate = useNavigate();
 
@@ -58,11 +61,16 @@ const Login = () => {
     }
   };
 
+  // Toggle password visibility
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
-    <div>
+    <div className="login-container">
       <Navbar />
       <ToastContainer />
-      <div>
+      <div className="login-content">
         <form onSubmit={handelSubmit} className="login-form">
           <div className="account">
             <input
@@ -71,18 +79,28 @@ const Login = () => {
               placeholder="Email"
               onChange={handelInput}
             />
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              onChange={handelInput}
-            />
+            <div className="password-input-container">
+              <input
+                type={showPassword ? "text" : "password"} // Toggle input type
+                name="password"
+                placeholder="Password"
+                onChange={handelInput}
+              />
+              <span
+                className="password-toggle"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}{" "}
+                {/* Toggle eye icon */}
+              </span>
+            </div>
             <p>
               If you need to create an account? <a href="/signup">Sign Up</a>
             </p>
           </div>
           <button type="submit">Log In</button>
         </form>
+        <div className="image-container"></div>
       </div>
     </div>
   );

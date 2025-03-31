@@ -25,7 +25,12 @@ const Home = () => {
       <Navbar />
       <div className="home">
         <h2>Welcome to the Home Page!!</h2>
-        <button onClick={logout}>Log Out</button>
+        <button
+          onClick={logout}
+          style={{ backgroundColor: "red", color: "white" }}
+        >
+          Log Out
+        </button>
       </div>
     </div>
   );

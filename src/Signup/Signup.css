@@ -38,6 +38,21 @@ form .heading{
     flex-wrap: wrap;
     
 }
-img{
-    width: 500px;
-}
+.password-toggle {
+    position: absolute;
+    right: 20px;
+    top: 75%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
+  .form-group {
+    position: relative;
+  }
+  
+  input {
+    width: 100%;
+    padding-right: 40px; /* Adds padding to the right so the icon doesn't overlap the text */
+    box-sizing: border-box;
+  }
+  

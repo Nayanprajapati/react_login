@@ -5,6 +5,7 @@ import "./Signup.css";
 import Navbar from "../Navbar/Navbar";
 import sinchan from "../assets/sinchan.png"; // Fixed import statement for image
 import { useNavigate } from "react-router-dom";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Importing eye icons
 
 const Signup = () => {
   const [data, setData] = useState({
@@ -13,6 +14,9 @@ const Signup = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false); // State for confirm password visibility
 
   const navigate = useNavigate();
 
@@ -121,21 +125,35 @@ const Signup = () => {
             </div>
             <div className="form-group">
               <input
-                type="password"
+                type={showPassword ? "text" : "password"} // Toggle password visibility
                 name="password"
                 placeholder="Password"
                 value={data.password}
                 onChange={handleInputChange}
               />
+              <span
+                className="password-toggle"
+                onClick={() => setShowPassword(!showPassword)} // Toggle visibility on click
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}{" "}
+                {/* Eye icon for visibility */}
+              </span>
             </div>
             <div className="form-group">
               <input
-                type="password"
+                type={showConfirmPassword ? "text" : "password"} // Toggle confirm password visibility
                 name="confirmPassword"
                 placeholder="Confirm Password"
                 value={data.confirmPassword}
                 onChange={handleInputChange}
               />
+              <span
+                className="password-toggle"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)} // Toggle visibility on click
+              >
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}{" "}
+                {/* Eye icon for visibility */}
+              </span>
             </div>
             <p>
               Already have an account? <a href="/login">Login</a>
