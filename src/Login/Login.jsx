@@ -1,49 +1,67 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Don't forget to import the styles
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      // If user is logged in, redirect to home page
+      navigate("/home");
+    }
+  }, [navigate]);
 
   const handelInput = (event) => {
     const value = event.target.value;
     const name = event.target.name;
-    if ("email" == name) {
+    if ("email" === name) {
       setEmail(value);
     }
-    if ("password" == name) {
+    if ("password" === name) {
       setPassword(value);
     }
   };
+
   const handelSubmit = (event) => {
     event.preventDefault();
 
-    if (email == "" || password == "") {
-      alert("Please enter your details");
+    if (email === "" || password === "") {
+      toast.error("Please enter your details");
     } else {
       let getDetails = JSON.parse(localStorage.getItem("users"));
-      console.log(getDetails);
-      getDetails.map((curValue) => {
-        console.log(curValue.email);
+      let userFound = false;
+
+      getDetails?.forEach((curValue) => {
         let storeEmail = curValue.email;
         let storePassword = curValue.password;
-        if (email == storeEmail && password == storePassword) {
-          alert("Login Successfully");
+
+        if (email === storeEmail && password === storePassword) {
+          // Store logged-in user details in localStorage
+          localStorage.setItem("loggedInUser", JSON.stringify(curValue));
+
+          toast.success("Login Successful!");
           navigate("/home");
-        } else {
-          return setMsg("Login Failed");
+          userFound = true;
         }
       });
+
+      if (!userFound) {
+        toast.error("Invalid email or password");
+      }
     }
   };
+
   return (
     <div>
-      <p className="errMsg">{msg}</p>
       <Navbar />
+      <ToastContainer />
       <div>
         <form onSubmit={handelSubmit} className="login-form">
           <div className="heading">
@@ -63,7 +81,7 @@ const Login = () => {
               onChange={handelInput}
             />
             <p>
-              If you have to create account? <a href="/">Sign Up</a>
+              If you need to create an account? <a href="/signup">Sign Up</a>
             </p>
           </div>
           <button type="submit">Log In</button>
