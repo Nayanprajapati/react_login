@@ -1,0 +1,41 @@
+form{
+    width: 330px;
+    text-align: center;
+}
+
+form input{
+    width: 95%;
+    padding: 5px;
+    border: 1px solid rgb(119, 119, 119);
+    font-size:17px ;
+    color: rgb(83, 83, 83); 
+    margin-top: 21px;
+}
+
+form button{
+    width: 135px;
+    height: 33px;
+    background-color:chartreuse;
+    color:white;
+    border: none;
+    cursor: pointer;
+    margin-top: 22px;
+}
+
+form .heading{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;   
+}
+
+.main-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 53px;
+    margin-top: 29px;
+    flex-wrap: wrap;
+}
+img{
+    width: 500px;
+}

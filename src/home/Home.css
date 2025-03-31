@@ -1,0 +1,17 @@
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.home button{
+    width:130px;
+    height:36px;
+    border: none;
+    background-color: red;
+    color: white;
+    font: 18px;
+    cursor: pointer;
+
+}
