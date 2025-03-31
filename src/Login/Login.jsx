@@ -64,9 +64,6 @@ const Login = () => {
       <ToastContainer />
       <div>
         <form onSubmit={handelSubmit} className="login-form">
-          <div className="heading">
-            <p>Log In</p>
-          </div>
           <div className="account">
             <input
               type="email"

@@ -3,7 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./Signup.css";
 import Navbar from "../Navbar/Navbar";
-import main from "../assets/main.jpg";
+import sinchan from "../assets/sinchan.png"; // Fixed import statement for image
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
@@ -144,7 +144,11 @@ const Signup = () => {
           <button type="submit">Sign Up</button>
         </form>
         <div>
-          <img src={main} alt="Illustration" />
+          <img
+            src={sinchan}
+            alt="Illustration"
+            style={{ width: "200px", height: "auto" }}
+          />
         </div>
       </div>
     </div>

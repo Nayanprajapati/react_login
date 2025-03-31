@@ -1,3 +1,4 @@
+
 form{
     width: 330px;
     text-align: center;
@@ -35,6 +36,7 @@ form .heading{
     gap: 53px;
     margin-top: 29px;
     flex-wrap: wrap;
+    
 }
 img{
     width: 500px;
